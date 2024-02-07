@@ -10,8 +10,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TP2Client.ViewsModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.Extensions.DependencyInjection;
+
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -23,10 +26,11 @@ namespace TP2Client.Views
     /// </summary>
     public sealed partial class FilmPage : Page
     {
+
         public FilmPage()
         {
             this.InitializeComponent();
-            this.DataContext = this;
+            this.DataContext = App.Current.Services.GetService<FilmViewModel>();
         }
 
 

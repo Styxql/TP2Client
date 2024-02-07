@@ -36,16 +36,10 @@ namespace TP2Client.Services
             }
         }
 
-        public bool Task<Serie> PostSerieAsync(string nomControleur,Serie serie)
+        public async Task<bool> PostSerieAsync(string nomControleur,Serie serie)
         {
-            try
-            {
-                return await HttpClient.PostAsJsonAsync<Serie>(nomControleur, serie);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            var response=await HttpClient.PostAsJsonAsync(nomControleur, serie);
+            return response.IsSuccessStatusCode;
         }
     }
 }

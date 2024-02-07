@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -12,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TP2Client.Views;
+using TP2Client.ViewsModels;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -31,10 +33,17 @@ namespace TP2Client
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        /// 
+        public static FrameworkElement MainRoot { get; private set; }
+        public ServiceProvider Services { get; }
         public App()
         {
             this.InitializeComponent();
+            ServiceCollection services = new ServiceCollection();
+            services.AddTransient<FilmViewModel>();
+            Services=services.BuildServiceProvider();
         }
+        public new static App Current => (App)Application.Current;
 
         /// <summary>
         /// Invoked when the application is launched.
@@ -48,6 +57,7 @@ namespace TP2Client
             this.m_window.Content = rootFrame;
             m_window.Activate();
             rootFrame.Navigate(typeof(FilmPage));
+            MainRoot=m_window.Content as FrameworkElement;
         }
 
         private Window m_window;
