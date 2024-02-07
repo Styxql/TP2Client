@@ -1,27 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="TP2Client.Views.FilmPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TP2Client.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:TP2Client.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
     <RelativePanel>
-        <TextBlock x:Name="tbTitre" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10">Titre</TextBlock>
-        <TextBox Width="450" x:Name="txTitre" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbTitre"></TextBox>
-        <TextBlock x:Name="tbResume" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="txTitre">Resume</TextBlock>
-        <TextBox Width="450" Height="100" x:Name="txResume" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbResume"></TextBox>
-        <TextBlock x:Name="tbSaison" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="txResume">Nb Saisons</TextBlock>
-        <TextBox x:Name="txSaison"  RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbSaison"></TextBox>
-        <TextBlock x:Name="tbEpisode" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="txSaison">Nb Episode</TextBlock>
-        <TextBox x:Name="txEpisode" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbEpisode"></TextBox>
-        <TextBlock x:Name="tbAnnee" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="txEpisode">Annee de sortie </TextBlock>
-        <TextBox x:Name="txAnnee" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbAnnee"></TextBox>
-        <TextBlock x:Name="tbChaine" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="txAnnee">Chaine</TextBlock>
-        <TextBox x:Name="txChaine" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="6" RelativePanel.Below="tbChaine"></TextBox>
-        <Button RelativePanel.AlignHorizontalCenterWithPanel="True" Width="100" Margin="6" RelativePanel.Below="txChaine">Ajouter</Button>
+        <TextBlock
+            x:Name="tbTitre"
+            Margin="10"
+            RelativePanel.AlignHorizontalCenterWithPanel="True">
+            Titre
+        </TextBlock>
+        <TextBox
+            x:Name="txTitre"
+            Width="450"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbTitre"
+            Text="{Binding Serie.Titre, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbResume"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txTitre">
+            Resume
+        </TextBlock>
+        <TextBox
+            x:Name="txResume"
+            Width="450"
+            Height="100"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbResume"
+            Text="{Binding Serie.Resume, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbSaison"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txResume">
+            Nb Saisons
+        </TextBlock>
+        <TextBox
+            x:Name="txSaison"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbSaison"
+            Text="{Binding Serie.Nbsaisons, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbEpisode"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txSaison">
+            Nb Episode
+        </TextBlock>
+        <TextBox
+            x:Name="txEpisode"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbEpisode"
+            Text="{Binding Serie.Nbepisodes, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbAnnee"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txEpisode">
+            Annee de sortie
+        </TextBlock>
+        <TextBox
+            x:Name="txAnnee"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbAnnee"
+            Text="{Binding Serie.Anneecreation, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbChaine"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txAnnee">
+            Chaine
+        </TextBlock>
+        <TextBox
+            x:Name="txChaine"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbChaine"
+            Text="{Binding Serie.Network, Mode=TwoWay}" />
+        <Button
+            Width="100"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txChaine">
+            Ajouter
+        </Button>
     </RelativePanel>
 </Page>

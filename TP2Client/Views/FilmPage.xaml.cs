@@ -29,6 +29,9 @@ namespace TP2Client.Views
             this.DataContext = this;
         }
 
+
+
+
        
     }
 }
