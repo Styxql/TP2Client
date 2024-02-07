@@ -15,7 +15,19 @@ namespace TP2Client.ViewsModels
     public class FilmViewModel : ObservableObject
     {
         public IRelayCommand BtnSetConversion { get; }
-        private Serie Serie { get; set; }
+        
+        private Serie serie;
+        public Serie Serie {
+            get { return serie; }
+            set
+            {
+                serie = value;
+                OnPropertyChanged();
+            }
+        }
+        
+
+
 
        
 
@@ -24,23 +36,22 @@ namespace TP2Client.ViewsModels
             this.GetDataOnLoadAsync();
             BtnSetConversion = new RelayCommand(ActionAddFilm);
             //BtnSetOtherConversion = new RelayCommand(ActionSetOtherConversion);
+           
         }
 
-        
+
         public async void GetDataOnLoadAsync()
         {
             WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
-            List <Serie> result = await service.GetSerieAsync("series");
+            List<Serie> result = await service.GetSerieAsync("series");
             if (result == null)
             {
-                MessageAsync("API non disponible", "Erreur");
+                 MessageAsync("API non disponible", "Erreur");
             }
             else
             {
-                //Serie = new ObservableCollection<Serie>(result);
+                Serie = new ObservableCollection<Serie>(result);
             }
-
-
         }
         public async void MessageAsync(string content, string title)
         {
@@ -59,7 +70,8 @@ namespace TP2Client.ViewsModels
 
         public async void ActionAddFilm()
         {
-           
+            WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
+            List<Serie> result = await service.PostSerieAsync("series",);
         }
 
 
