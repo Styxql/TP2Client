@@ -71,8 +71,22 @@ namespace TP2Client.ViewsModels
 
         public async void ActionAddFilm()
         {
+            bool res;
             WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
-             await service.PostSerieAsync("series",Serie);
+            res= await service.PostSerieAsync("series",Serie);
+            if (!res)
+            {
+                ContentDialog noApi = new ContentDialog
+                {
+                    Title = "marche pas",
+                    Content = "marche pas",
+                    CloseButtonText = "OK"
+
+                };
+                noApi.XamlRoot = App.MainRoot.XamlRoot;
+
+                ContentDialogResult result = await noApi.ShowAsync();
+            }
         }
 
 
