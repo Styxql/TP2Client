@@ -91,6 +91,7 @@
             RelativePanel.Below="tbChaine"
             Text="{Binding Serie.Network, Mode=TwoWay}" />
         <Button
+            Command="{Binding BtnSetConversion}"
             Width="100"
             Margin="6"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
