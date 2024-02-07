@@ -37,6 +37,7 @@ namespace TP2Client.ViewsModels
             BtnSetConversion = new RelayCommand(ActionAddFilm);
             //BtnSetOtherConversion = new RelayCommand(ActionSetOtherConversion);
            
+           
         }
 
 
@@ -50,7 +51,7 @@ namespace TP2Client.ViewsModels
             }
             else
             {
-                Serie = new ObservableCollection<Serie>(result);
+                //Serie = new ObservableCollection<Serie>(result);
             }
         }
         public async void MessageAsync(string content, string title)
@@ -71,7 +72,7 @@ namespace TP2Client.ViewsModels
         public async void ActionAddFilm()
         {
             WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
-            List<Serie> result = await service.PostSerieAsync("series",);
+             await service.PostSerieAsync("series",Serie);
         }
 
 
