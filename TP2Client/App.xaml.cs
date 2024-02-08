@@ -41,6 +41,7 @@ namespace TP2Client
             this.InitializeComponent();
             ServiceCollection services = new ServiceCollection();
             services.AddTransient<FilmViewModel>();
+            services.AddTransient<SearchPage>();
             Services=services.BuildServiceProvider();
         }
         public new static App Current => (App)Application.Current;
@@ -54,6 +55,7 @@ namespace TP2Client
             m_window = new MainWindow();
 
             Frame rootFrame =new Frame();
+            
             this.m_window.Content = rootFrame;
             m_window.Activate();
             rootFrame.Navigate(typeof(FilmPage));

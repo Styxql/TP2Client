@@ -1,14 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP2Client.Models;
 using TP2Client.Services;
+using TP2Client.Views;
 
 namespace TP2Client.ViewsModels
 {
@@ -33,9 +36,13 @@ namespace TP2Client.ViewsModels
 
         public FilmViewModel()
         {
+            Serie = new Serie();
+            
+
             this.GetDataOnLoadAsync();
             BtnSetConversion = new RelayCommand(ActionAddFilm);
             //BtnSetOtherConversion = new RelayCommand(ActionSetOtherConversion);
+            
            
            
         }
@@ -73,7 +80,7 @@ namespace TP2Client.ViewsModels
         {
             bool res;
             WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
-            res= await service.PostSerieAsync("series",this.Serie);
+            res= await service.PostSerieAsync(this.Serie);
             if (!res)
             {
                 ContentDialog noApi = new ContentDialog
@@ -89,6 +96,32 @@ namespace TP2Client.ViewsModels
             }
         }
 
+        public async void ActionModifFilm()
+        {
+            bool res;
+            WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
+            res=await service.PostSerieAsync(this.Serie);
+            if (!res)
+            {
+                ContentDialog noApi = new ContentDialog
+                {
+                    Title = "marche pas",
+                    Content = "marche pas",
+                    CloseButtonText = "OK"
+
+                };
+                noApi.XamlRoot = App.MainRoot.XamlRoot;
+
+                ContentDialogResult result = await noApi.ShowAsync();
+            }
+        }
+
+       
+
+
 
     }
-}
+
+
+    }
+

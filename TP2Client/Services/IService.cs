@@ -10,7 +10,7 @@ namespace TP2Client.Services
     public interface IService
     {
         public  Task<List<Serie>> GetSerieAsync(string nomControleur);
-        public Task<bool> PostSerieAsync(string nomControleur, Serie serie);
+        //public Task<bool> PostSerieAsync(string nomControleur, Serie serie);
 
 
     }

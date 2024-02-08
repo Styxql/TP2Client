@@ -17,7 +17,7 @@ namespace TP2Client.Services
         public WSService(string url)
         {
             HttpClient = new HttpClient();
-            HttpClient.BaseAddress = new Uri("https://apiserieslavque.azurewebsites.net/api/series");
+            HttpClient.BaseAddress = new Uri("https://apiserieslavque.azurewebsites.net/api/");
             HttpClient.DefaultRequestHeaders.Accept.Clear();
             HttpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -36,11 +36,30 @@ namespace TP2Client.Services
             }
         }
 
-        public async Task<bool> PostSerieAsync(string nomControleur,Serie serie)
+        public async Task<bool> PostSerieAsync(Serie serie)
         {
-            var response=await HttpClient.PostAsJsonAsync(nomControleur, serie);
+            var response=await HttpClient.PostAsJsonAsync("series", serie);
+            var test = response.Content.ReadAsStringAsync();
+
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<bool> PutSerieAsync(Serie serie)
+        {
+            var response= await HttpClient.PutAsJsonAsync("series/"+serie.Serieid,serie);
+            return response.IsSuccessStatusCode;
+        }
+        public async Task<bool> DeleteSerieAsync(Serie serie)
+        {
+            var response = await HttpClient.PutAsJsonAsync("series/" + serie.Serieid, serie);
+            return response.IsSuccessStatusCode;
+        }
+
+        
+
+
+
+
 
 
     }
