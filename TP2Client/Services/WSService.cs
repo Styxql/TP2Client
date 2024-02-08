@@ -41,5 +41,7 @@ namespace TP2Client.Services
             var response=await HttpClient.PostAsJsonAsync(nomControleur, serie);
             return response.IsSuccessStatusCode;
         }
+
+
     }
 }

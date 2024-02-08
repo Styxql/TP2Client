@@ -73,7 +73,7 @@ namespace TP2Client.ViewsModels
         {
             bool res;
             WSService service = new WSService("https://apiserieslavque.azurewebsites.net/api/series");
-            res= await service.PostSerieAsync("series",Serie);
+            res= await service.PostSerieAsync("series",this.Serie);
             if (!res)
             {
                 ContentDialog noApi = new ContentDialog
