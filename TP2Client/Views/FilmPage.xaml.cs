@@ -32,66 +32,66 @@ namespace TP2Client.Views
             this.InitializeComponent();
             this.DataContext = App.Current.Services.GetService<FilmViewModel>();
         }
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            SetCurrentNavigationViewItem(args.SelectedItemContainer as NavigationViewItem);
-        }
-        public void SetCurrentNavigationViewItem(NavigationViewItem item)
-        {
-            var frame = Window.Current.Content as Frame;
+        //private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        //{
+        //    SetCurrentNavigationViewItem(args.SelectedItemContainer as NavigationViewItem);
+        //}
+        //public void SetCurrentNavigationViewItem(NavigationViewItem item)
+        //{
+        //    var frame = Window.Current.Content as Frame;
 
-            if (item == null)
-            {
-                return;
-            }
+        //    if (item == null)
+        //    {
+        //        return;
+        //    }
 
-            if (item.Tag == null)
-            {
-                return;
-            }
+        //    if (item.Tag == null)
+        //    {
+        //        return;
+        //    }
 
-            frame.Navigate(
-            Type.GetType(item.Tag.ToString()),
-            item.Content);
-            NavigationView.Header = item.Content;
-            NavigationView.SelectedItem = item;
-        }
-        private void NavigationView_Loaded(object sender,RoutedEventArgs e)
-        {
-            // Navigates, but does not update the Menu.
-            // ContentFrame.Navigate(typeof(HomePage));
+        //    frame.Navigate(
+        //    Type.GetType(item.Tag.ToString()),
+        //    item.Content);
+        //    NavigationView.Header = item.Content;
+        //    NavigationView.SelectedItem = item;
+        //}
+        //private void NavigationView_Loaded(object sender,RoutedEventArgs e)
+        //{
+        //    // Navigates, but does not update the Menu.
+        //    // ContentFrame.Navigate(typeof(HomePage));
 
-            SetCurrentNavigationViewItem(GetNavigationViewItems(typeof(FilmPage)).First());
-        }
+        //    SetCurrentNavigationViewItem(GetNavigationViewItems(typeof(FilmPage)).First());
+        //}
 
 
-        public List<NavigationViewItem> GetNavigationViewItems()
-        {
-            var result = new List<NavigationViewItem>();
-            var items = NavigationView.MenuItems.Select(i => (NavigationViewItem)i).ToList();
-            items.AddRange(NavigationView.FooterMenuItems.Select(i => (NavigationViewItem)i));
-            result.AddRange(items);
+        //public List<NavigationViewItem> GetNavigationViewItems()
+        //{
+        //    var result = new List<NavigationViewItem>();
+        //    var items = NavigationView.MenuItems.Select(i => (NavigationViewItem)i).ToList();
+        //    items.AddRange(NavigationView.FooterMenuItems.Select(i => (NavigationViewItem)i));
+        //    result.AddRange(items);
 
-            foreach (NavigationViewItem mainItem in items)
-            {
-                result.AddRange(mainItem.MenuItems.Select(i => (NavigationViewItem)i));
-            }
+        //    foreach (NavigationViewItem mainItem in items)
+        //    {
+        //        result.AddRange(mainItem.MenuItems.Select(i => (NavigationViewItem)i));
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        public List<NavigationViewItem> GetNavigationViewItems(
-            Type type)
-        {
-            return GetNavigationViewItems().Where(i => i.Tag.ToString() == type.FullName).ToList();
-        }
+        //public List<NavigationViewItem> GetNavigationViewItems(
+        //    Type type)
+        //{
+        //    return GetNavigationViewItems().Where(i => i.Tag.ToString() == type.FullName).ToList();
+        //}
 
-        public List<NavigationViewItem> GetNavigationViewItems(
-            Type type,
-            string title)
-        {
-            return GetNavigationViewItems(type).Where(ni => ni.Content.ToString() == title).ToList();
-        }
+        //public List<NavigationViewItem> GetNavigationViewItems(
+        //    Type type,
+        //    string title)
+        //{
+        //    return GetNavigationViewItems(type).Where(ni => ni.Content.ToString() == title).ToList();
+        //}
 
 
 

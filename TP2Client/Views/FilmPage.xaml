@@ -14,10 +14,11 @@
 
 
     <RelativePanel>
-        <TextBlock
+      <TextBlock
             x:Name="tbTitre"
             Margin="10"
-            RelativePanel.AlignHorizontalCenterWithPanel="True">
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="btnSearch">
             Titre
         </TextBlock>
         <TextBox
@@ -26,7 +27,7 @@
             Margin="6"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.Below="tbTitre"
-            Text="{Binding Serie.Titre, Mode=TwoWay}" />
+            Text="{Binding Serie.Titre, Mode=TwoWay}"/>
         <TextBlock
             x:Name="tbResume"
             Margin="6"
@@ -95,6 +96,7 @@
             RelativePanel.Below="tbChaine"
             Text="{Binding Serie.Network, Mode=TwoWay}" />
         <Button
+            x:Name="btAjouter"
             Width="100"
             Margin="6"
             Command="{Binding BtnSetConversion}"
@@ -102,21 +104,9 @@
             RelativePanel.Below="txChaine">
             Ajouter
         </Button>
+       
 
 
-
-        <NavigationView x:Name="NavigationView"
-                Loaded="NavigationView_Loaded"
-                SelectionChanged="NavigationView_SelectionChanged"
-                Header="WinUI 3 Navigation Sample"
-                IsBackButtonVisible="Collapsed"
-                IsSettingsVisible="False">
-            <NavigationView.MenuItems>
-                <NavigationViewItem Content="Home">
-
-                </NavigationViewItem>
-            </NavigationView.MenuItems>
-        </NavigationView>
 
 
 

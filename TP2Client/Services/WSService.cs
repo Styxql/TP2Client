@@ -10,7 +10,7 @@ using TP2Client.Models;
 
 namespace TP2Client.Services
 {
-    public class WSService:IService
+    public class WSService
     {
         private readonly HttpClient HttpClient;
 
@@ -35,6 +35,20 @@ namespace TP2Client.Services
                 return null;
             }
         }
+        public async Task<Serie> GetASerieAsync(Serie serie)
+        {
+            var response = await HttpClient.GetAsync("series/" + serie.Serieid);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var serieFromResponse = await response.Content.ReadAsAsync<Serie>();
+                return serieFromResponse;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public async Task<bool> PostSerieAsync(Serie serie)
         {
@@ -51,7 +65,7 @@ namespace TP2Client.Services
         }
         public async Task<bool> DeleteSerieAsync(Serie serie)
         {
-            var response = await HttpClient.PutAsJsonAsync("series/" + serie.Serieid, serie);
+            var response = await HttpClient.DeleteAsync("series/" + serie.Serieid);
             return response.IsSuccessStatusCode;
         }
 

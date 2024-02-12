@@ -10,8 +10,101 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
-        <TextBlock x:Name="tbRechercher" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10">Rechercher</TextBlock>
-        <TextBox x:Name="txRechercher" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Search}" RelativePanel.Below="tbRechercher"></TextBox>
-        <Button RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="txRechercher" Command="{Binding SetBtnSearch}"></Button>
+        <TextBlock x:Name="tbNumSerie" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True">Numéro de série a afficher</TextBlock>
+        <TextBox RelativePanel.Below="tbNumSerie" x:Name="txNumserie" Margin="6" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding SearchedSerie.Serieid,Mode=TwoWay}"></TextBox>
+        <Button x:Name="btnSearch" RelativePanel.Below="txNumserie" Width="100" Height="30"  Margin="6" RelativePanel.AlignHorizontalCenterWithPanel="True" Command="{Binding BtnSearch}">Rechercher</Button>
+        <TextBlock
+            x:Name="tbTitre"
+            Margin="10"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="btnSearch">
+            Titre
+        </TextBlock>
+        <TextBox
+            x:Name="txTitre"
+            Width="450"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbTitre"
+            Text="{Binding SearchedSerie.Titre, Mode=TwoWay}"/>
+        <TextBlock
+            x:Name="tbResume"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txTitre">
+            Resume
+        </TextBlock>
+        <TextBox
+            x:Name="txResume"
+            Width="450"
+            Height="100"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbResume"
+            Text="{Binding SearchedSerie.Resume, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbSaison"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txResume">
+            Nb Saisons
+        </TextBlock>
+        <TextBox
+            x:Name="txSaison"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbSaison"
+            Text="{Binding SearchedSerie.Nbsaisons, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbEpisode"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txSaison">
+            Nb Episode
+        </TextBlock>
+        <TextBox
+            x:Name="txEpisode"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbEpisode"
+            Text="{Binding SearchedSerie.Nbepisodes, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbAnnee"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txEpisode">
+            Annee de sortie
+        </TextBlock>
+        <TextBox
+            x:Name="txAnnee"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbAnnee"
+            Text="{Binding SearchedSerie.Anneecreation, Mode=TwoWay}" />
+        <TextBlock
+            x:Name="tbChaine"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txAnnee">
+            Chaine
+        </TextBlock>
+        <TextBox
+            x:Name="txChaine"
+            Margin="6"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="tbChaine"
+            Text="{Binding SearchedSerie.Network, Mode=TwoWay}" />
+        <Button x:Name="btAjouter" Width="100" Margin="6" RelativePanel.Below="txChaine" RelativePanel.AlignHorizontalCenterWithPanel="True" Command="{Binding BtnSearch}">Ajouter</Button>
+        <Button x:Name="btModif" Margin="300,6,6,6" Width="100" RelativePanel.Below="txChaine" RelativePanel.AlignHorizontalCenterWithPanel="True" Command="{Binding BtnModif}">Modifier</Button>
+        <Button x:Name="btDelete" Margin="-200,6,6,6" Width="100" RelativePanel.Below="txChaine" RelativePanel.AlignHorizontalCenterWithPanel="True" Command="{Binding BtnDelete}">Supprimer</Button>
+
+
+
     </RelativePanel>
+
+
+
+
+
+
 </Page>
